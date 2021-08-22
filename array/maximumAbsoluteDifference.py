@@ -1,3 +1,6 @@
+'''
+https://www.interviewbit.com/problems/maximum-absolute-difference/
+'''
 def maxArr(A):
         #case1 = A[i] < A[j]. (A[j] + j) - (A[i] + i)
         #case2 = A[i] > A[j]. (A[i] - i) - (A[j] - j)
