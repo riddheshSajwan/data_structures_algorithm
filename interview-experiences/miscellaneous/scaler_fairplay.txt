@@ -1,0 +1,34 @@
+Interview - 1:
+
+Q1. https://leetcode.com/problems/fair-candy-swap/
+
+def fairCandySwap(self, aliceSizes: List[int], bobSizes: List[int]) -> List[int]:
+      sum_alice,sum_bob = sum(aliceSizes),sum(bobSizes)
+      desired_amount = (sum_alice + sum_bob)//2
+      #print(sum_alice,sum_bob,desired_amount)
+      #print(373-47+5,477-5+47)
+      hash_alice = set(aliceSizes)
+      res = [-1,-1]
+      for size in bobSizes:
+        if (desired_amount - (sum_bob-size)) in hash_alice:
+          res = [desired_amount-(sum_bob-size),size]
+          break
+      return res
+
+
+Q2. https://leetcode.com/problems/daily-temperatures/
+
+def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        stack = []
+        res = [0]*n
+        for i in range(n-1,-1,-1):
+          while stack and temperatures[stack[-1]] <= temperatures[i]:
+            stack.pop()
+          if stack and temperatures[stack[-1]] > temperatures[i]:
+            res[i] = stack[-1]-i
+          stack.append(i)
+        return res
+    
+--------------------------------------------------------------------------------
+
