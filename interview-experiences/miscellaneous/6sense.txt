@@ -1,0 +1,19 @@
+# Interview Round - 1
+Q1. Find the first occurrence of b in a string = "aaaaaabbb"
+Q2. Trapping Rain Water.
+Q3. Check whether anagram or not.
+
+# Interview Round - 2
+Q1. Given an array of integers (arr), return an array such that element at index i is product of all elements of the array (arr) except element at index i of arr.
+Q2. Binary search in a nxm grid, where number increase from left to right and top to bottom.
+
+# Interview Round  - 3
+Q1. Write a random function such that the probabililty of getting a city is proportional to its population.
+cities = [Mumbia,Delhi,Banglore] Population = [10,50,20]
+Q2. Longest Increasing Sequence.
+
+# Interview Round - 4
+Q1. https://www.geeksforgeeks.org/minimum-number-increment-operations-make-array-elements-equal/
+
+#Interview Round - 5
+Q1. https://www.geeksforgeeks.org/count-special-palindromes-in-a-string/#:~:text=A%20Substring%20is%20called%20special,is%20not%20special%20palindromic%20substring.

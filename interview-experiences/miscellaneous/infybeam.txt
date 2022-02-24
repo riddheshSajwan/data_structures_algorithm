@@ -1,0 +1,50 @@
+Q1. Next greater element
+stack = [5,13,33,23,6]
+res = [8,13,13,33,-1,-1,-1]
+4 -> 8
+
+def nextGreater(arr):
+	n = len(arr)			#[4, 28, 5, 13,33, 23, 6] [13,33]
+	stack = []			# res = [33,-1,-1,-1]
+	res = [-1]*n
+	for i in range(n-1,-1,-1):
+		if stack[-1] == []:
+			stack.append(arr[i])
+			continue
+		if arr[i] < stack[-1]:
+			res[i] = stack[-1]
+			stack.append(arr[i])
+		else:
+			while stack and stack[-1] < arr[i]:
+				stack.pop()
+			if stack:
+				res[i] = stack[-1]
+			stack.append(arr[i])
+
+	return res
+
+
+
+
+Q2. returnt the maximum count of intervals that can be merged.
+[[1,3],[2,3],[8,10],[4,6],[3,17],[18,20]]
+[[1,3],[2,3],[3,17],[4,6],[8,10],[18,20]]
+3
+start = 1
+end = 17
+res = 5
+def mergeInterval(arr):
+	n = len(arr)
+	arr.sort()
+	end = arr[0][1]
+	max_res = float('-inf')
+	res = 1
+	for i in range(1,n):
+		if arr[i][0] <= end:
+			res += 1
+			end = max(arr[i][1],end)
+		elif arr[i][0] > end:
+			max_res = max(max_res,res)
+			res = 1
+			end = arr[i][1]
+	return max(max_res,res)

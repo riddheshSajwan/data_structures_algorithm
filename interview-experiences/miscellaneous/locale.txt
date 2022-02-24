@@ -1,0 +1,32 @@
+design a rate-limiter.
+
+m-> messages, t-> time
+
+30,000 in 10 secs,
+
+35,000 in 5 secs 
+
+5,000 to wait for t-5   
+
+40,000 in 10 secs
+4,000 per secs 
+7.25 secs 
+t-7.25
+9
+
+t
+
+
+0 - (m_num - m_num_prev,ts-tsp)
+1 - (,ts-tsp
+
+[1,1,1,1,1,1]
+ i         j
+ 
+message_number_curr_time - message_number_ten_sec_old > 
+
+[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11]
+
+
+ 
+

@@ -1,0 +1,30 @@
+# First Round.
+'''
+given a list with nested lists or just integers. Flatten it
+ex:
+arr = [1,[2,3],4,5,[6,7,8], [9, [10]]]
+res = [1,2,3,4,5,6,7,8,9,10]
+'''
+A = [1,[2,3],4,5,[6,7,8], [9, [10]]]
+res = []
+def flatten(arr,i):
+    if arr is None:
+        return
+    if i >= len(arr):
+        return None
+    if isinstance(arr[i],list):
+        flatten(arr[i],0)
+    else:
+        res.append(arr[i])
+    return flatten(arr,i+1)
+flatten(A,0)
+print(res)
+
+''' 
+Write code to create a stack with push,pop and min operation
+'''
+
+'''
+How will you make an existing code more readable, efficient etc.
+'''
+

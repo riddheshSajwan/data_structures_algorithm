@@ -1,0 +1,63 @@
+Q1. Return list of prime factors of a given number.
+def get_prime_array(n):
+    prime = [True]*(n+1)
+    prime[0] = prime[1] = False
+    p = 2
+    while p <= n and prime[p] == True:
+        multiple = 2
+        while p*multiple <= n:
+            prime[p*multiple] = False
+            multiple += 1
+        p += 1
+    return prime
+
+def check_prime_factor(dividend,divisor,prime_arr):
+    if dividend%divisor == 0 and prime_arr[divisor] == True:
+        return True
+    return False
+        
+def prime_factors(num):
+    res = []
+    prime_arr = get_prime_array(num)
+    print(prime_arr)
+    i = 2
+    while i <= num:
+        if check_prime_factor(num,i,prime_arr):
+            res.append(i)
+        i += 1
+    return res
+
+print(prime_factors(99))
+
+Q2. Given a list of words, create a word dictionary.
+
+'''
+arr = ["A","AB", "BB", "D", "DA"]
+res = {"A":["A","AB"],
+       "B":["BB"],
+       "D":["DA","D"]}
+'''
+
+
+
+def make_dictionary(string_arr):
+    string_dict = {}
+    for string_item in string_arr:
+        if string_item[0] not in string_dict:
+            string_dict[string_item[0]] = []
+        string_dict[string_item[0]].append(string_item)
+    return string_dict
+
+print(make_dictionary(["A","AB", "BB", "D", "DA"]))
+
+Q3. Puzzle
+4 people A B C D
+4 of them cross a bridge, 1 torch
+bridge can hold only 2 at a time
+all have different speed
+
+A = 1
+B = 2
+C = 7
+D = 10
+

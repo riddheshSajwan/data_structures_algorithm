@@ -1,0 +1,47 @@
+#Dam-Design
+
+#
+# Complete the 'maxHeight' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY wallPositions
+#  2. INTEGER_ARRAY wallHeights
+#
+
+def maxHeight(wallPositions, wallHeights):
+    # Write your code here  
+    n = max(wallPositions)
+    if n < 3:
+        return 0
+    left_arr = [0]*(n+1)
+    idx = 0
+    for pos in wallPositions:
+        left_arr[pos] = wallHeights[idx]
+        idx += 1
+    res = 0
+    i,j = min(wallPositions),n
+    print(left_arr)
+    while i <=j:
+        if left_arr[i] == 0:
+            i += 1
+            continue
+        if left_arr[j] == 0:
+            j -= 1
+            continue
+        if left_arr[i] < left_arr[j]:
+            left_arr[i+1] = left_arr[i] + 1
+            i += 1
+            res = max(res,left_arr[i])
+        elif left_arr[i] > left_arr[j]:
+            left_arr[j-1] = left_arr[j] + 1
+            j -= 1
+            res = max(res,left_arr[j])
+        else:
+            left_arr[i+1] = left_arr[i] + 1
+            left_arr[j-1] = left_arr[j] + 1
+            i += 1
+            j -= 1
+            res = max(res,left_arr[i])
+    print(left_arr)
+    return res
