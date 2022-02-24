@@ -1,0 +1,146 @@
+Round-1:
+
+Q1. 
+Given a binary tree, a target node in the binary tree, and an integer value k, print all the nodes that are at distance k from the given target node. No parent pointers are available.
+
+def preorder(node,dirc,dist,node_map):
+	if node is None:
+		return node_map
+	node_map[node] = (dirc,dist)
+	preorder(node.left,dirc,dist+1,node_map)
+	preorder(node.right,dirc,dist+1,node_map)
+	return node_map
+
+def find_k_dist_nodes(root,target,k):
+	node_map = {root:(0,0)}
+	node_map = preorder(root.left,-1,1,node_map)
+	node_map = preorder(root.right,1,1,node_map)
+	res = []
+	for node in node_map:
+		if node == target:
+			continue
+		tup = node_map[node]
+		if tup[0] == node_map[target][0]:
+			if abs(tup[1] - node_map[target][1]) == k:
+				res.append(node)
+		else:
+			if tup[1] + node_map[target][1] == k:
+				res.append(node)
+	return res
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Q2. 
+Find the Rotation Count in Rotated Sorted array
+Input : arr[] = {15, 18, 2, 3, 6, 12}
+Output: 2
+Input: arr[] = {7, 9, 11, 12, 15};
+Output: 0
+
+def number_of_rotations(arr):
+	n = len(arr)
+	beg = 0
+	end = n-1
+	while beg < end:
+		mid = beg + (end-beg)//2
+		if arr[mid-1] > arr[mid] < arr[mid+1]:
+			return mid
+		elif arr[mid-1] < arr[mid] > arr[mid+1]:
+			return mid+1
+		elif arr[mid] > arr[n-mid-1]:
+			beg = mid+1
+		else:
+			end = mid-1
+	return beg
+
+---------------------------------------------------------------------------
+Round-2:
+
+Q.1. Largest Sum Contiguous Subarray
+
+0   1   -2   3   4   5  6
+3 4 5 6 0 -3 2
+
+Def largetSum(arr):
+	N = len(arr)
+	max_sum,max_start,max_end = 0,0,0
+	Temp_sum,temp_start = 0,0
+	For i in range(n):
+		Temp_sum += arr[i]
+		If temp_sum > max_sum:
+			Max_start = temp_start
+			Max_end = i
+			Max_sum = temp_sum
+		If temp_sum < 0:
+			Temp_start = i+1
+			Temp_sum = 0
+	Return arr[max_start:max_end+1]
+
+TC: O(n) SC:O(1)
+
+[start,end],[start,end]
+
+
+Q.2. Find the number of islands
+
+mat[][] =     {{1, 1, 0, 0, 0},
+                   {0, 1, 0, 0, 1},
+                   {1, 0, 0, 1, 1},
+                   {0, 0, 0, 0, 0},
+                   {1, 0, 1, 0, 1}}
+
+# Q.2. Find the number of islands
+ 
+# mat[][] =   [{[]{]1, 1, 0, 0, 0],
+#           [{]0, 1, 0, 0, 1],
+#           [{]1, 0, 0, 1, 1],
+#           [{]0, 0, 0, 0, 0],
+#           [{]1, 0, 1, 0, 1]]
+ 
+from collections import deque
+ 
+visited = set()
+ 
+def bfs(mat,q,n,m):
+    while q:
+        node = q.popleft()
+        if node in visited:
+            continue
+        visited.add(node)
+        row,col = node[0],node[1]
+        for i,j in [(row+1,col),(row-1,col),(row,col+1),(row,col-1)]:
+            if 0 <= i < n and 0 <= j < m and  mat[i][j] == 1:
+                q.append((i,j))
+    return
+ 
+ 
+def checkIfSingular(mat,row,col,n,m):
+    for i,j in [(row+1,col),(row-1,col),(row,col+1),(row,col-1)]:
+        if 0 <= i < n and 0 <= j < m and  mat[i][j] == 1:
+            return True
+    return False
+ 
+def numberOfIslands(mat):
+    n = len(mat)
+    m = len(mat[0])
+    q = deque()
+    res = 0
+    for row in range(n):
+        for col in range(m):
+            if mat[row][col] == 1 and (row,col) not in visited and checkIfSingular(mat,row,col,n,m):
+                q.append((row,col))
+                bfs(mat,q,n,m)
+                q.clear()
+                res += 1
+    return res
+ 
+ 
+ 
+mat =  [[1, 1, 0, 0, 0],
+        [0, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1],
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 1]]
+print(numberOfIslands(mat))
+TC: O(mn)
+SC: O(mn)

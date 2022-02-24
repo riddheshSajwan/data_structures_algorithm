@@ -14,3 +14,6 @@ Q2. Longest Increasing Sequence.
 
 # Interview Round - 4
 Q1. https://www.geeksforgeeks.org/minimum-number-increment-operations-make-array-elements-equal/
+
+#Interview Round - 5
+Q1. https://www.geeksforgeeks.org/count-special-palindromes-in-a-string/#:~:text=A%20Substring%20is%20called%20special,is%20not%20special%20palindromic%20substring.

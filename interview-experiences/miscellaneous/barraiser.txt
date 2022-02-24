@@ -1,0 +1,121 @@
+# You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+# Merge all the linked-lists into one sorted linked-list and return it.
+
+class Solution:
+    def solution(self,s):
+        # write the solution here..      
+      
+def main():
+  line = input()
+  ret = Solution().solution(line)
+  print(ret)
+
+if __name__ == '__main__':
+    main()
+    
+
+k lists 
+
+1
+2
+3
+4
+5
+
+1,2,3,4,5
+7,8,9,10
+2,4,5,6,7
+4,5,6,7,8
+
+[l1, l2, l3, l4, l5, l6]
+nk/2 + nk/l2
+
+nk/4 + nk/l4
+
+nk/2         k - lists 
+
+
+
+[1,2,3,4,5]
+
+nlog(n)
+
+
+logn(th)
+
+
+
+1 2 =  
+.
+.
+.
+.k/8
+.k/4
+1 2 3 ...... k/2 = n*k/4
+1 2 3 ...... k = n*k/2
+
+def merge(mat,beg,end):
+    if beg < end:
+        mid = beg + (end-beg)//2
+        merge(mat,beg,mid)
+        merge(mat,mid+1,end)
+        arr = mergeLists(mat[beg:mid], mat[mid+1:end])
+    return arr
+
+def mergeLists(l1,l2):
+    n = len(l1)
+    m = len(l2)
+    i,j = 0,0
+    res = []
+    while i < n and j < m:
+        if l1[i] <= l2[j]:
+            res.append(l1[i])
+            i += 1
+        else:
+            res.append(l1[j])
+            j += 1
+    if i < n:
+        res += l1[i:]
+    if j < m:
+        res += l2[j:]
+    return res
+            
+
+def mergeKLists(mat):
+    k = len(mat)
+    n = len(mat[0])
+    return merge(mat,0,k-1)
+    
+    
+
+
+class group():
+    set_name
+    def add_members()
+    def set_share()
+    def get_members()
+    def get_share()
+    def remove_member()
+
+
+class transaction():
+    def __init__
+    def set_amount()
+    def set_expense_type()
+    def set_expense_participants(names)
+    def get_expense_participants
+
+class group_methods():
+    def update_expense_share()
+    def settle_payment(user1,user2)
+
+class member():
+    set_name
+    set_email
+    set_picture
+
+
+
+    
+
+

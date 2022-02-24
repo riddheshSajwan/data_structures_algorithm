@@ -1,0 +1,74 @@
+Round-1
+'My Name is Jessa'
+'yM emaN si asseJ'
+
+def reverseEachWord(st):
+	words = st.split(' ')
+	res = ""
+	for word in words:
+		res += word[::-1] + " "
+	return res.strip()
+
+print(reverseEachWord("My Name is Jessa"))
+------------------------------------------------------------------------------
+Given an expression string, write a python program to find whether a given string has balanced parentheses or not.
+Examples:
+Input : {[]{()}}
+Output : Balanced
+
+Input : [{}{}(]
+Output : Unbalanced
+
+stack = [(]
+"{)"
+def balancedParanthesis(st):
+	complement_brace = {"}":"{","]":"[",")":"("}
+	stack = []
+	for brace in st:
+		if brace in {"(","{","["}:
+			stack.append(brace)
+		else:
+			if stack and stack[-1] == complement_brace[brace]:
+				stack.pop()
+			else:
+				return "Unbalanced"
+	return "balanced" if stack == [] else "Unbalanced"
+
+print(balancedParanthesis("}"))
+
+------------------------------------------------------------------------------
+			
+Input: 
+str1 = "geeks"
+str2 = "dgeek"
+Output: “geek”
+Example 2:
+Input:
+str1 = "practicegeeks"
+str2 = "coderpractice"
+Output: “practice”
+
+def longestPrefix(str1,str2):
+	i,j = 0,0
+	res_max,res_start,res_end = 0,0,0
+	temp_res,temp_start = 0,0
+	while j < len(str2) and i < len(str1):
+		#print()
+		if str1[i] == str2[j]:
+			temp_res += 1
+			i += 1
+			j += 1
+		else:
+			while str2[j] != str1[0]:
+				j += 1
+			temp_res, temp_start = 0,j
+			i = 0
+		if temp_res > res_max:
+			res_start = temp_start
+			res_end = j
+	
+	return str2[res_start:res_end+1]
+
+print(longestPrefix("geeks","dgeek"))
+
+======================================================================

@@ -1,0 +1,2 @@
+Round-1:
+https://www.geeksforgeeks.org/find-total-no-of-collisions-taking-place-between-the-balls-in-which-initial-direction-of-each-ball-is-given/
