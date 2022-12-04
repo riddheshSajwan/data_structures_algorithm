@@ -1,5 +1,5 @@
 '''
-https://leetcode.com/problems/climbing-stairs/
+https://leetcode.com/problems/climbing-stairs/description/
 '''
 
 # Time O(n) Space O(n)
@@ -36,3 +36,13 @@ def climbStairsRecursive(n):
 print(climbStairsRecursive(39))
 
 # Both perform same.
+
+#Time O(n) Space O(1)
+def climbStairs_constantSpace(A: int) -> int:
+    if A <= 1:
+        return 1
+    f0,f1 = 1,1
+    for i in range(2,A+1):
+        fn = f0 + f1
+        f0,f1 = f1,fn
+    return fn
